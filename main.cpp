@@ -4,6 +4,8 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <iomanip>
+#include <algorithm>
 #include "BankCustom.h"
 #include "JediCustom.h"
 #include "SithCustom.h"
@@ -46,6 +48,11 @@ int main()
 			istringstream instr(line);
 			instr >> fname >> lname >> gender >> ID >> balance >> saber;
 			
+			for_each(ID.begin(), ID.end(), [](char& c)
+			{
+					c = ::tolower(c);
+			});
+
 			// convert balance to double 
 			balance = balance.substr(1,balance.length() - 1);
 			double numericBalance;
@@ -69,6 +76,7 @@ int main()
 	jediBank.close();
 	int jediCount = count;
 	cout << "Done" << endl;
+	cout << endl;
 
 
 	// Read in sith bank
@@ -94,6 +102,12 @@ int main()
 			// get tokens
 			istringstream instr(line);
 			instr >> fname >> lname >> gender >> ID >> balance >> apprentice;
+			
+			for_each(ID.begin(), ID.end(), [](char& c)
+			{
+				c = ::tolower(c);
+			});
+			
 
 			// Checks for duplicates
 			bool isDuplicate = false;
@@ -154,12 +168,13 @@ int main()
 	}
 	sithBank.close();
 	cout << "Done" << endl;
+	cout << endl;
 
 	// output final merged results to MergedData.txt
 	cout << "Writing MergedData.txt..." << endl;
 	ofstream outputFile;
 	outputFile.open("MergedData.txt");
-	outputFile << "Custom_Name	Gender	ID#	Account_Balance Saber Apprentice" << endl;
+	outputFile << left << setw(16) << "Custom_Name" << left << setw(8) << "Gender" << left << setw(8) << "ID#" << left << setw(16) << "Account_Balance" << left << setw(15) << "Lightsaber" << left << setw(10) << "Apprentice" << endl;
 	for (int i = 0; i < count; i++)
 	{
 		outputFile << mergedMembers[i]->toString();

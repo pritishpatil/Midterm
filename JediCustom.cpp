@@ -1,5 +1,6 @@
 #include "JediCustom.h"
 #include <sstream>
+#include <iomanip>
 
 void JediCustom::setSaber(string newSaber )
 {
@@ -14,6 +15,11 @@ string JediCustom::getSaber()
 string JediCustom::toString()
 {
 	stringstream resultStream;
-	resultStream << firstname << "\t" << lastname << "\t" << gender << "\t" << id << "\t" << accountBalance << "\t" << saber << endl;
+	stringstream balanceStream;
+	string fullName = firstname + " " + lastname;
+	balanceStream << "$" << setprecision(2) << fixed << accountBalance;
+	string balanceStr = balanceStream.str();
+	resultStream << left << setw(16) << fullName << left << setw(8) << gender << left << setw(8) << id << left << setw(16) 
+		<< balanceStr << left << setw(15) << saber << endl;
 	return resultStream.str();
 }
