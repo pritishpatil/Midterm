@@ -20,7 +20,7 @@ public:
 	string getFname();
 	string getGender();
 	double getBalance();
-	virtual void printAccount() = 0;
+	virtual string toString() = 0;
 
 protected:
 	string firstname; 

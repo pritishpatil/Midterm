@@ -1,4 +1,5 @@
 #include "CommonCustom.h"
+#include <sstream>
 
 void CommonCustom::setApprentice(string newApprentice)
 {
@@ -10,9 +11,11 @@ void CommonCustom::setSaber(string newSaber)
 	saber = newSaber;
 }
 
-void CommonCustom::printAccount()
+string CommonCustom::toString()
 {
-	cout << firstname << lastname << id << gender << saber << apprentice << endl;
+	stringstream resultStream;
+	resultStream << firstname << "\t" << lastname << "\t" << gender << "\t" << id << "\t" << accountBalance << "\t" << saber << "\t" << apprentice << endl;
+	return resultStream.str();
 }
 
 string CommonCustom::getSaber()

@@ -1,13 +1,16 @@
 #include "SithCustom.h"
+#include <sstream>
 
 void SithCustom::setApprentice(string newApprentice)
 {
 	apprentice = newApprentice;
 }
 
-void SithCustom::printAccount() 
+string SithCustom::toString() 
 {
-	cout << firstname << "\t" << lastname << "\t" << gender << "\t" << id << "\t" << accountBalance << "\t" << apprentice << endl;
+	stringstream resultStream;
+	resultStream << firstname << "\t" << lastname << "\t" << gender << "\t" << id << "\t" << accountBalance << "\t" << apprentice << endl;
+	return resultStream.str();
 }
 
 string SithCustom::getApprentice()

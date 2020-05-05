@@ -6,7 +6,7 @@ class SithCustom :
 public: 
 
 	void setApprentice(string);
-	void printAccount() override;
+	string toString() override;
 	string getApprentice();
 
 

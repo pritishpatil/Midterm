@@ -7,7 +7,7 @@ public:
 
 	void setApprentice(string);
 	void setSaber(string);
-	void printAccount() override;
+	string toString() override;
 	string getApprentice();
 	string getSaber();
 

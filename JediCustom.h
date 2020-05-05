@@ -6,7 +6,7 @@ class JediCustom :
 public: 
 
 	void setSaber(string);
-	void printAccount() override;
+	string toString() override;
 	string getSaber();
 
 

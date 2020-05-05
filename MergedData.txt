@@ -1,0 +1,7 @@
+Custom_Name	Gender	ID#	Account_Balance Saber Apprentice
+Adi	Gallia	F	K43T76	645764	Blue
+Qui-Gon	Jinn	M	J5334D	7.90835e+08	Green
+Darth	Vader	M	as65gf	150000	Red	Y
+Luke	Skywalker	M	5645RE	656775	Blue
+Darth	Sidious	M	s45ug0	56466.5	N
+Count	Dooku	M	hfg3jg	42344.9	Y

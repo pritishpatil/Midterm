@@ -31,6 +31,7 @@ int main()
 		exit(1);
 	}
 
+	cout << "Reading BankOfJedi.txt..." << endl;
 	getline(jediBank, line);
 	while (true)
 	{
@@ -66,7 +67,8 @@ int main()
 		}
 	}
 	jediBank.close();
-
+	int jediCount = count;
+	cout << "Done" << endl;
 
 
 	// Read in sith bank
@@ -78,6 +80,7 @@ int main()
 		exit(1);
 	}
 
+	cout << "Reading BankOfSith.txt..." << endl;
 	getline(sithBank, line);
 	while (true)
 	{
@@ -92,6 +95,20 @@ int main()
 			istringstream instr(line);
 			instr >> fname >> lname >> gender >> ID >> balance >> apprentice;
 
+			// Checks for duplicates
+			bool isDuplicate = false;
+			int dupIndex = -1;
+			for (int i = 0; i < jediCount; i++)
+			{
+				BankCustom* customerToCheck = mergedMembers[i];
+				string jedi = customerToCheck->getid();
+				if (_stricmp(jedi.c_str(), ID.c_str()) == 0)
+				{
+					isDuplicate = true;
+					dupIndex = i;
+				}
+			}
+
 			// convert balance to double 
 			balance = balance.substr(1, balance.length() - 1);
 			double numericBalance;
@@ -101,23 +118,54 @@ int main()
 			converter >> numericBalance;
 
 			//create bank account
-			SithCustom* customer = new SithCustom();
-			customer->setFname(fname);
-			customer->setLname(lname);
-			customer->setGender(gender);
-			customer->setID(ID);
-			customer->setBalance(numericBalance);
-			customer->setApprentice(apprentice);
-			mergedMembers[count++] = customer;
-
+			BankCustom* customer = NULL;
+			double duplicateBalance = 0;
+			if (isDuplicate == true)
+			{
+				// Merge duplicate info of all fields, combines balance, save off at dupindex
+				CommonCustom* cc = new CommonCustom();
+				JediCustom* jd = (JediCustom*)mergedMembers[dupIndex];
+				duplicateBalance = mergedMembers[dupIndex]->getBalance();
+				cc->setFname(fname);
+				cc->setLname(lname);
+				cc->setGender(gender);
+				cc->setID(ID);
+				cc->setBalance(numericBalance + duplicateBalance);
+				cc->setApprentice(apprentice);
+				cc->setSaber(jd->getSaber());
+				customer = cc;
+				mergedMembers[dupIndex] = customer; 
+			}
+			else
+			{
+				// non duplicate sith custom member
+				SithCustom* sc = new SithCustom();
+				sc = new SithCustom();
+				sc->setFname(fname);
+				sc->setLname(lname);
+				sc->setGender(gender);
+				sc->setID(ID);
+				sc->setBalance(numericBalance);
+				sc->setApprentice(apprentice);
+				customer = sc;
+				mergedMembers[count++] = customer;
+			}
 		}
 	}
 	sithBank.close();
+	cout << "Done" << endl;
 
-	cout << "Custom_Name	Gender	ID#	Account_Balance	Apprentice" << endl;
+	// output final merged results to MergedData.txt
+	cout << "Writing MergedData.txt..." << endl;
+	ofstream outputFile;
+	outputFile.open("MergedData.txt");
+	outputFile << "Custom_Name	Gender	ID#	Account_Balance Saber Apprentice" << endl;
 	for (int i = 0; i < count; i++)
 	{
-		mergedMembers[i]->printAccount();
+		outputFile << mergedMembers[i]->toString();
 	}
+	outputFile.close();
+	cout << "Done" << endl;
+
 	return 0;
 }
