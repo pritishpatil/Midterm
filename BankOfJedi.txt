@@ -1,0 +1,5 @@
+Custom_Name	Gender	ID#	Account_Balance	Lightsaber
+Adi Gallia	F	K43T76	$645764.32	Blue
+Qui-Gon Jinn	M	J5334D	$790835434.76	Green
+Darth Vader	M	AS65GF	$50000.00	Red
+Luke Skywalker	M	5645RE	$656775.34	Blue

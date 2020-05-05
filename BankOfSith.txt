@@ -1,0 +1,5 @@
+Custom_Name	Gender	ID#	Account_Balance	Apprentice
+Darth Sidious	M	s45ug0	$56466.54	N
+Count Dooku	M	hfg3jg	$42344.87	Y
+Darth Vader	M	as65gf	$100000.00	Y
+
