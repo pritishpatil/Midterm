@@ -7,7 +7,7 @@ void SithCustom::setApprentice(string newApprentice)
 
 void SithCustom::printAccount() 
 {
-	cout << firstname << lastname << id << gender << accountBalance << apprentice << endl;
+	cout << firstname << "\t" << lastname << "\t" << gender << "\t" << id << "\t" << accountBalance << "\t" << apprentice << endl;
 }
 
 string SithCustom::getApprentice()

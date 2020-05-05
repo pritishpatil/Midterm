@@ -12,5 +12,5 @@ string JediCustom::getSaber()
 
 void JediCustom::printAccount()
 {
-	cout << firstname << " " << lastname << " " << gender << " " << id << " " << accountBalance << " " << saber << endl;
+	cout << firstname << "\t" << lastname << "\t" << gender << "\t" << id << "\t" << accountBalance << "\t" << saber << endl;
 }
