@@ -1,3 +1,9 @@
+/*
+	PIC 10B 2B, Midterm Exam
+	Author: Pritish Patil
+	Date: 05/05/2020
+*/
+
 #include "CommonCustom.h"
 #include <sstream>
 #include <iomanip>
@@ -12,6 +18,7 @@ void CommonCustom::setSaber(string newSaber)
 	saber = newSaber;
 }
 
+// returns final string ouput for CommonCustom derived class
 string CommonCustom::toString()
 {
 	stringstream resultStream;

@@ -1,3 +1,9 @@
+/*
+	PIC 10B 2B, Midterm Exam
+	Author: Pritish Patil
+	Date: 05/05/2020
+*/
+
 #include "BankCustom.h"
 
 void BankCustom::setID(string newID)

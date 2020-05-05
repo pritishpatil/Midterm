@@ -1,5 +1,9 @@
 
-
+/*
+	PIC 10B 2B, Midterm Exam
+	Author: Pritish Patil
+	Date: 05/05/2020
+*/
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -13,11 +17,11 @@
 
 using namespace std;
 
-const int MAX = 100;
+const int ARRAYSIZE = 1000; // should suffice for reasonable user base (same format in txt file) as requested in spec
 
 int main()
 {
-	BankCustom* mergedMembers[MAX];
+	BankCustom* mergedMembers[ARRAYSIZE];	// base class array can hold derived objects for polymorphism
 	int count;
 	string line;
 	ifstream jediBank;
@@ -44,19 +48,18 @@ int main()
 		}
 		else 
 		{
-			// get tokens
+			// get token
 			istringstream instr(line);
 			instr >> fname >> lname >> gender >> ID >> balance >> saber;
 			
-			for_each(ID.begin(), ID.end(), [](char& c)
+			for_each(ID.begin(), ID.end(), [](char& c) // makes ID lowercase
 			{
-					c = ::tolower(c);
+				c = ::tolower(c);
 			});
 
 			// convert balance to double 
 			balance = balance.substr(1,balance.length() - 1);
 			double numericBalance;
-
 			stringstream converter;
 			converter << balance;
 			converter >> numericBalance;
@@ -103,7 +106,7 @@ int main()
 			istringstream instr(line);
 			instr >> fname >> lname >> gender >> ID >> balance >> apprentice;
 			
-			for_each(ID.begin(), ID.end(), [](char& c)
+			for_each(ID.begin(), ID.end(), [](char& c)	// makes id lowercase
 			{
 				c = ::tolower(c);
 			});
@@ -177,7 +180,7 @@ int main()
 	outputFile << left << setw(16) << "Custom_Name" << left << setw(8) << "Gender" << left << setw(8) << "ID#" << left << setw(16) << "Account_Balance" << left << setw(15) << "Lightsaber" << left << setw(10) << "Apprentice" << endl;
 	for (int i = 0; i < count; i++)
 	{
-		outputFile << mergedMembers[i]->toString();
+		outputFile << mergedMembers[i]->toString();	// derived object toString used via polymorphism
 	}
 	outputFile.close();
 	cout << "Done" << endl;

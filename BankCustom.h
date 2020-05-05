@@ -1,3 +1,9 @@
+/*
+	PIC 10B 2B, Midterm Exam
+	Author: Pritish Patil
+	Date: 05/05/2020
+*/
+
 #pragma once
 
 #include <iostream>
@@ -20,7 +26,7 @@ public:
 	string getFname();
 	string getGender();
 	double getBalance();
-	virtual string toString() = 0;
+	virtual string toString() = 0; // pure virtual function of base abstract class
 
 protected:
 	string firstname; 
