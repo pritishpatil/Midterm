@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-const int MAX = 100;
+
 
 class BankCustom
 {
